@@ -186,7 +186,7 @@ export const Button: FC<ButtonComponentProps> = ({
         width: 100%;
         height: 100%;
         background-color: rgba(255, 255, 255, 0.9);
-        z-index: 1; /* Ensure the spinner is above the button content */
+        z-index: 1;
     `;
 
     const ChildrenText = styled.span`
