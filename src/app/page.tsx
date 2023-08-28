@@ -1,4 +1,5 @@
 import { Button } from '@/entities/button';
+import Pluc from '../../public/plus-16-light.svg';
 
 export default function Home() {
     const bgStyle = {
@@ -16,11 +17,13 @@ export default function Home() {
                 <Button>Default</Button>
                 <Button use="custom">Custom</Button>
                 <Button use="text">Text</Button>
+                <Button icon={Pluc}>Default</Button>
             </div>
             <div style={bgStyle}>
                 <Button>Default</Button>
                 <Button use="custom">Custom</Button>
                 <Button use="text">Text</Button>
+                <Button icon={Pluc}>Default</Button>
             </div>
         </>
     );

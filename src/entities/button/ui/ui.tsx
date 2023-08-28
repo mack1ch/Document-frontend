@@ -184,6 +184,8 @@ export const Button: FC<ButtonComponentProps> = ({
         display: inline-flex;
         padding: ${narrow
             ? '6px 12px'
+            : icon
+            ? '6px 12px 6px 8px'
             : size === 'small'
             ? '6px 12px'
             : size === 'medium'
