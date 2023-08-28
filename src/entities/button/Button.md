@@ -1,12 +1,13 @@
-Базовый пример кнопки.
+Базовый пример кнопки
 
 ```jsx harmony
 import { Button } from '@/entities/button';
+import Pluc from '../../public/plus-16-light.svg';
 
 <Button>Создать проект</Button>;
 ```
 
-У кнопки есть различные стили (остальные пока в разработке)
+У кнопки есть различные стили
 
 ```jsx harmony
 import { Gapped } from '@shared/gapped';
@@ -22,9 +23,15 @@ const bgStyle = {
 <Gapped vertical>
     <Gapped>
         <Button use="default">Default</Button>
+        <Button use="custom">Default</Button>
+        <Button use="text">Text</Button>
+        <Button icon={Pluc}>Default</Button>
     </Gapped>
     <Gapped style={bgStyle}>
         <Button use="default">Default</Button>
+        <Button use="custom">Default</Button>
+        <Button use="text">Text</Button>
+        <Button icon={Pluc}>Default</Button>
     </Gapped>
 </Gapped>;
 ```

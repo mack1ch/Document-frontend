@@ -10,12 +10,14 @@ import React, {
     CSSProperties,
 } from 'react';
 import styled from 'styled-components';
+import Image from 'next/image';
+import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 
 export type ButtonType = 'button' | 'submit' | 'reset';
 export type ButtonSize = 'small' | 'medium' | 'large';
 export type ButtonUse =
     | 'default'
-    | 'primary'
+    | 'custom'
     | 'success'
     | 'danger'
     | 'pay'
@@ -24,7 +26,7 @@ export type ButtonUse =
     | 'backless';
 
 export interface ButtonComponentProps {
-    children: ReactNode;
+    children?: ReactNode;
 
     /**
      * 	Отключенное состояние кнопки
@@ -110,6 +112,26 @@ export interface ButtonComponentProps {
      * 	Переводит кнопку в состояние загрузки
      */
     loading?: boolean | undefined;
+
+    /**
+     * Стиль кнопки
+     */
+    use?: ButtonUse;
+
+    /**
+     * Задний фон кнопки, если стиль `custom`
+     */
+    bgColor?: CSSProperties['background'];
+
+    /**
+     * Цвет текста кнопки, если стиль `custom`
+     */
+    color?: CSSProperties['color'];
+
+    /**
+     * Иконка слева от текста кнопки
+     */
+    icon?: string | StaticImport | undefined;
 }
 
 export const Button: FC<ButtonComponentProps> = ({
@@ -124,16 +146,26 @@ export const Button: FC<ButtonComponentProps> = ({
     onMouseEnter,
     onMouseLeave,
     onMouseOver,
-    align,
+    align = 'center',
     borderless,
     narrow,
     style,
     title,
     type = 'button',
     loading = false,
+    use = 'default',
+    bgColor = '#3D3D3D',
+    color = '#fff',
+    icon,
 }) => {
     const Button = styled.button`
-        background: #fff;
+        background: ${use === 'default'
+            ? '#fff'
+            : use === 'custom' && bgColor
+            ? bgColor
+            : use === 'text'
+            ? 'transparent'
+            : null};
 
         width: ${width ? width : 'fit-content'};
         height: ${size === 'small' ? '32px' : size === 'medium' ? '40px' : '48px'};
@@ -143,13 +175,22 @@ export const Button: FC<ButtonComponentProps> = ({
         font-weight: 400;
         line-height: normal;
 
+        user-select: none;
+
         cursor: pointer;
-        color: #222;
         border-radius: 8px;
-        border: ${borderless ? 'none' : '1px solid rgba(0, 0, 0, 0.16)'};
+        border: ${borderless || use === 'text' ? 'none' : '1px solid rgba(0, 0, 0, 0.16)'};
 
         display: inline-flex;
-        padding: ${narrow ? '6px 12px' : '8px 16px'};
+        padding: ${narrow
+            ? '6px 12px'
+            : size === 'small'
+            ? '6px 12px'
+            : size === 'medium'
+            ? '8px 16px'
+            : size === 'large'
+            ? '12px 20px'
+            : null};
         justify-content: center;
         align-items: center;
         text-align: ${align};
@@ -158,15 +199,18 @@ export const Button: FC<ButtonComponentProps> = ({
         overflow: hidden;
 
         &:hover {
+            background: ${use === 'text' ? 'rgba(0, 0, 0, 0.06)' : null};
             filter: brightness(96%);
         }
         &:active {
-            filter: brightness(90%);
+            background: ${use === 'text' ? 'rgba(0, 0, 0, 0.10)' : null};
+            filter: brightness(85%);
         }
         &:disabled {
             cursor: default;
             color: #adadad;
             border: 1px solid rgba(0, 0, 0, 0.1);
+            background-color: rgba(0, 0, 0, 0.06);
 
             /* Отключение hover-эффекта */
             &:hover {
@@ -190,7 +234,27 @@ export const Button: FC<ButtonComponentProps> = ({
     `;
 
     const ChildrenText = styled.span`
-        visibility: ${loading ? 'hidden' : 'visible'};
+        visibility: ${loading && !icon ? 'hidden' : 'visible'};
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        text-align: ${align};
+        color: ${disabled
+            ? '#adadad'
+            : use === 'default'
+            ? '#222'
+            : use === 'custom' && color
+            ? color
+            : null};
+    `;
+
+    const IconContainer = styled.span`
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 4px;
+        width: 16px;
+        height: 16px;
     `;
 
     return (
@@ -206,11 +270,16 @@ export const Button: FC<ButtonComponentProps> = ({
                 onMouseLeave={onMouseLeave}
                 onMouseEnter={onMouseEnter}
                 onMouseOver={onMouseOver}
-                disabled={disabled}>
-                {loading && (
+                disabled={loading ? true : disabled ? true : false}>
+                {loading && !icon && (
                     <SpinnerContainer>
                         <Spinner />
                     </SpinnerContainer>
+                )}
+                {icon && (
+                    <IconContainer>
+                        {loading ? <Spinner /> : <Image src={icon} width={16} height={16} alt="" />}
+                    </IconContainer>
                 )}
                 <ChildrenText>{children}</ChildrenText>
             </Button>
