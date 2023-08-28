@@ -2,7 +2,6 @@
 
 ```jsx harmony
 import { Button } from '@/entities/button';
-import Pluc from '../../public/plus-16-light.svg';
 
 <Button>Создать проект</Button>;
 ```
@@ -11,6 +10,7 @@ import Pluc from '../../public/plus-16-light.svg';
 
 ```jsx harmony
 import { Gapped } from '@shared/gapped';
+import Pluc from '../../public/plus-16-light.svg';
 
 const bgStyle = {
     backgroundImage: `linear-gradient(to right, rgba(130, 130, 130, 0.5) 1px, transparent 1px),
