@@ -1,5 +1,8 @@
 import { Button } from '@/entities/button';
 import Pluc from '../../public/plus-16-light.svg';
+import { Input } from '@/entities/input';
+import Loupe from '../../public/search-loupe.svg';
+import X from '../../public/x.svg';
 
 export default function Home() {
     const bgStyle = {
@@ -11,19 +14,22 @@ export default function Home() {
         display: 'flex',
         gap: '16px',
     };
+
     return (
         <>
             <div style={{ padding: '16px', display: 'flex', gap: '16px' }}>
                 <Button>Default</Button>
                 <Button use="custom">Custom</Button>
                 <Button use="text">Text</Button>
-                <Button icon={Pluc}>Default</Button>
+                <Button icon={Pluc}>Icon</Button>
+                <Input mask="99/999/99" />
             </div>
             <div style={bgStyle}>
                 <Button>Default</Button>
                 <Button use="custom">Custom</Button>
                 <Button use="text">Text</Button>
-                <Button icon={Pluc}>Default</Button>
+                <Button icon={Pluc}>Icon</Button>
+                <Input labelText="Текст" placeholder="За Родину" rightIcon={X} leftIcon={Loupe} />
             </div>
         </>
     );

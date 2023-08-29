@@ -7,7 +7,6 @@ body {
 body {
     color: #222;
     background: #fff;
-   
 }
 
 a {
@@ -54,6 +53,14 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+
+input::-webkit-input-placeholder {
+    color: #adadad;
+}
+
+input::-moz-placeholder {
+    color: #adadad;
 }
 
 input::-webkit-datetime-edit-fields-wrapper {

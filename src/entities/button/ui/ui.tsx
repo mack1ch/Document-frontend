@@ -132,6 +132,11 @@ export interface ButtonComponentProps {
      * Иконка слева от текста кнопки
      */
     icon?: string | StaticImport | undefined;
+
+    /**
+     * HTML атрибут `class`
+     */
+    className?: string | undefined;
 }
 
 export const Button: FC<ButtonComponentProps> = ({
@@ -157,6 +162,7 @@ export const Button: FC<ButtonComponentProps> = ({
     bgColor = '#3D3D3D',
     color = '#fff',
     icon,
+    className,
 }) => {
     const Button = styled.button`
         background: ${use === 'default'
@@ -198,7 +204,6 @@ export const Button: FC<ButtonComponentProps> = ({
         text-align: ${align};
         transition: all 0.2s;
         position: relative;
-        overflow: hidden;
 
         &:hover {
             background: ${use === 'text' ? 'rgba(0, 0, 0, 0.06)' : null};
@@ -272,7 +277,8 @@ export const Button: FC<ButtonComponentProps> = ({
                 onMouseLeave={onMouseLeave}
                 onMouseEnter={onMouseEnter}
                 onMouseOver={onMouseOver}
-                disabled={loading ? true : disabled ? true : false}>
+                disabled={loading ? true : disabled ? true : false}
+                className={className}>
                 {loading && !icon && (
                     <SpinnerContainer>
                         <Spinner />
