@@ -217,7 +217,7 @@ export const Button: FC<ButtonComponentProps> = ({
             cursor: default;
             color: #adadad;
             border: 1px solid rgba(0, 0, 0, 0.1);
-            background-color: rgba(0, 0, 0, 0.06);
+            background: rgba(0, 0, 0, 0.06);
 
             /* Отключение hover-эффекта */
             &:hover {
@@ -236,8 +236,8 @@ export const Button: FC<ButtonComponentProps> = ({
         justify-content: center;
         width: 100%;
         height: 100%;
-        background-color: rgba(255, 255, 255, 0.9);
-        z-index: 1;
+
+        z-index: -1;
     `;
 
     const ChildrenText = styled.span`
@@ -246,7 +246,7 @@ export const Button: FC<ButtonComponentProps> = ({
         justify-content: center;
         align-items: center;
         text-align: ${align};
-        color: ${disabled
+        color: ${disabled || loading
             ? '#adadad'
             : use === 'default'
             ? '#222'
@@ -281,12 +281,16 @@ export const Button: FC<ButtonComponentProps> = ({
                 className={className}>
                 {loading && !icon && (
                     <SpinnerContainer>
-                        <Spinner />
+                        <Spinner icon={false} />
                     </SpinnerContainer>
                 )}
                 {icon && (
                     <IconContainer>
-                        {loading ? <Spinner /> : <Image src={icon} width={16} height={16} alt="" />}
+                        {loading ? (
+                            <Spinner icon={true} />
+                        ) : (
+                            <Image src={icon} width={16} height={16} alt="" />
+                        )}
                     </IconContainer>
                 )}
                 <ChildrenText>{children}</ChildrenText>
