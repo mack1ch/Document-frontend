@@ -65,6 +65,9 @@ export const Radio: FC<RadioComponentProps> = ({
     warning,
     disabled,
     size = 'small',
+    onMouseOver,
+    onMouseEnter,
+    onMouseLeave,
 }) => {
     const RadioWrapper = styled.label`
         display: inline-flex;
@@ -146,16 +149,15 @@ export const Radio: FC<RadioComponentProps> = ({
     `;
     return (
         <>
-            <RadioWrapper>
-                <RadioInput
-                    disabled={disabled}
-                    type="radio"
-                    checked={focused}
-                    onChange={onValueChange}
-                />
+            <RadioWrapper
+                onMouseEnter={onMouseEnter}
+                onMouseOver={onMouseOver}
+                onMouseLeave={onMouseLeave}>
+                <RadioInput disabled={disabled} type="radio" checked={focused} />
                 <RadioControl />
                 {value && (
                     <span
+                        onChange={onValueChange}
                         style={{
                             marginLeft: '8px',
                             fontSize:
