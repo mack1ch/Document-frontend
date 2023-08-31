@@ -121,6 +121,7 @@ export const TextArea: FC<TextAreaComponentProps> = ({
         font-style: normal;
         font-weight: 400;
         flex-shrink: 0;
+        overflow-y: hidden;
 
         &::placeholder {
             font-size: ${size === 'small' ? '12px' : size === 'medium' ? '12px' : '13px'};
