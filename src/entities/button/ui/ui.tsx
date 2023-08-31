@@ -180,7 +180,8 @@ export const Button: FC<ButtonComponentProps> = ({
         font-style: normal;
         font-weight: 400;
         line-height: normal;
-
+        -ms-user-select: none;
+        user-select: none;
         user-select: none;
 
         cursor: pointer;

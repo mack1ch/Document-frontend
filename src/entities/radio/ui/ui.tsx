@@ -94,9 +94,13 @@ export const Radio: FC<RadioComponentProps> = ({
             ? '2px solid #DD473B'
             : warning
             ? '2px solid #FCB73E'
-            : '1.5px solid #adadad'};
+            : size === 'medium'
+            ? '2px solid #adadad'
+            : size === 'large'
+            ? '2px solid #adadad'
+            : '1.6px solid #adadad'};
         transition: all 0.2s;
-        background: ${disabled ? '#0000001A' : null};
+        background: ${disabled ? '#0000001A' : '#fff'};
 
         &:disabled {
             border: 1.5px solid #0000001a;

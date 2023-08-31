@@ -4,6 +4,7 @@ import { Input } from '@/entities/input';
 import Loupe from '../../public/search-loupe.svg';
 import X from '../../public/x.svg';
 import { Radio } from '@/entities/radio';
+import { TextArea } from '@/entities/textArea';
 
 export default function Home() {
     const bgStyle = {
@@ -65,6 +66,36 @@ export default function Home() {
                 <Input placeholder="За Родину" rightIcon={X} leftIcon={Loupe} />
                 <Input size="medium" placeholder="За Родину" rightIcon={X} leftIcon={Loupe} />
                 <Input size="large" placeholder="За Родину" rightIcon={X} leftIcon={Loupe} />
+            </div>
+            <div style={{ padding: '16px', display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
+                <TextArea placeholder="Используйте многострочное поле для ввода больших текстов" />
+                <TextArea
+                    size="medium"
+                    placeholder="Используйте многострочное поле для ввода больших текстов"
+                />
+                <TextArea
+                    size="large"
+                    placeholder="Используйте многострочное поле для ввода больших текстов"
+                />
+                <TextArea
+                    disabled
+                    placeholder="Используйте многострочное поле для ввода больших текстов"
+                />
+            </div>
+            <div style={bgStyle}>
+                <TextArea placeholder="Используйте многострочное поле для ввода больших текстов" />
+                <TextArea
+                    size="medium"
+                    placeholder="Используйте многострочное поле для ввода больших текстов"
+                />
+                <TextArea
+                    size="large"
+                    placeholder="Используйте многострочное поле для ввода больших текстов"
+                />
+                <TextArea
+                    disabled
+                    placeholder="Используйте многострочное поле для ввода больших текстов"
+                />
             </div>
         </>
     );

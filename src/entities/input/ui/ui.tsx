@@ -222,22 +222,25 @@ export const Input: FC<InputComponentProps> = ({
                 ? '2px solid #FCB73E'
                 : ' 1px solid rgba(0, 0, 0, 0.32)'};
         }
-        &:active {
-            border-radius: 2px;
-            border: ${error
-                ? '2px solid #DD473B'
-                : warning
-                ? '2px solid #FCB73E'
-                : '2px solid #3d3d3d'};
-        }
+
         &:focus {
+            outline: ${error
+                ? '#dd473b solid 2px'
+                : warning
+                ? '#fcb73e solid 2px'
+                : '#3d3d3d solid 2px'};
             border: none;
+            border-radius: 2px;
+        }
+
+        &::placeholder {
+            color: #aaa;
         }
 
         &:-moz-placeholder {
             opacity: 1;
         }
-        &::-moz-placeholder {
+        &:-moz-placeholder {
             opacity: 1;
         }
         &:disabled {
