@@ -3,7 +3,6 @@
 import React, { FC, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { getTextAreaHeight } from '../model';
-import throttle from 'lodash.throttle';
 
 export type TextareaSize = 'small' | 'medium' | 'large';
 export interface TextAreaComponentProps {
