@@ -182,6 +182,7 @@ export const Button: FC<ButtonComponentProps> = ({
         line-height: normal;
         -ms-user-select: none;
         user-select: none;
+        gap: 10px;
         user-select: none;
 
         cursor: pointer;
@@ -196,7 +197,7 @@ export const Button: FC<ButtonComponentProps> = ({
             : size === 'small'
             ? '6px 12px'
             : size === 'medium'
-            ? '8px 16px'
+            ? '9px 16px'
             : size === 'large'
             ? '12px 20px'
             : null};
@@ -289,8 +290,12 @@ export const Button: FC<ButtonComponentProps> = ({
                     <IconContainer>
                         {loading ? (
                             <Spinner icon={true} />
-                        ) : (
+                        ) : size === 'small' ? (
                             <Image src={icon} width={16} height={16} alt="" />
+                        ) : size === 'medium' ? (
+                            <Image src={icon} width={20} height={20} alt="" />
+                        ) : (
+                            <Image src={icon} width={24} height={24} alt="" />
                         )}
                     </IconContainer>
                 )}

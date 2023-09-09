@@ -1,0 +1,50 @@
+.layout {
+    border-radius: 20px;
+    background: #fff;
+    padding-left: 28px;
+    padding-top: 28px;
+    padding-right: 48px;
+    width: 100%;
+
+    .tableHeader {
+        color: #74757a;
+        font-family: Lab Grotesque;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        letter-spacing: normal;
+    }
+    .tableElement {
+        color: #222;
+        font-family: Lab Grotesque;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: normal;
+    }
+    .tableElement__grey {
+        color: #74757a;
+        font-family: Lab Grotesque;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: normal;
+    }
+
+    .border {
+        border-bottom: 1px solid #000 !important;
+    }
+
+    .tableElementLayout {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+    }
+}
+
+.border {
+    border-bottom: 1px solid #000 !important;
+}

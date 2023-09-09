@@ -1,0 +1,27 @@
+.layout {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-top: 32px;
+    padding-left: 27px;
+    gap: 16px;
+    .pageTitle {
+        color: #222;
+        font-family: Lab Grotesque;
+        font-size: 26px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        letter-spacing: normal;
+    }
+    .buttonLayout {
+        display: flex;
+        gap: 16px;
+    }
+}
+
+.gapNull {
+    display: flex;
+    gap: 0px;
+}
