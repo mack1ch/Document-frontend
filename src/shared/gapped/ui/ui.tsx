@@ -50,12 +50,12 @@ export const Gapped: FC<GappedComponentProps> = ({
     alignItems,
 }) => {
     const Gapped = styled.div`
-    display: flex;
-    flex-direction: ${vertical ? 'column' : 'row'},
-    vertical-align: ${verticalAlign};
-    flex-wrap: ${wrap}
-    align-items: ${alignItems}
-    gap: ${gap}
+        display: flex;
+        flex-direction: ${vertical ? 'column' : 'row'};
+        vertical-align: ${verticalAlign};
+        flex-wrap: ${wrap};
+        align-items: ${alignItems};
+        gap: ${gap};
     `;
     return (
         <>
