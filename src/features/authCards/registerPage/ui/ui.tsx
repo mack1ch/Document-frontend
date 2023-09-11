@@ -1,11 +1,7 @@
 'use client';
 
 import styles from './ui.module.scss';
-import Arrow from '../../../../../public/inputIcons/arrowDropDown.svg';
-import { ThemeContext, ThemeFactory, Input, Select } from '@skbkontur/react-ui';
-import { dropDownData, dropDownDataProps } from '../data';
-import { Button } from '@/entities/button';
-import { InputInverse } from '@/entities/input';
+import { ThemeContext, ThemeFactory, Input, Select, Button } from '@skbkontur/react-ui';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 export const RegisterCard = () => {
@@ -22,6 +18,10 @@ export const RegisterCard = () => {
         borderColorFocus: '#5A9C46',
         selectBorderRadiusLarge: '8px',
         menuItemHoverBg: '#5A9C46',
+        btnBorderRadiusLarge: '8px',
+        btnPrimaryBg: '#5A9C46',
+        btnPrimaryHoverBg: '#449429',
+        btnPrimaryActiveBg: '#5A9C46',
     });
     useEffect(() => {
         if (
@@ -49,7 +49,7 @@ export const RegisterCard = () => {
     const handleLoadingStart = () => {
         setTimeout(() => {
             setButtonLoading(false);
-        }, 2000);
+        }, 4000);
     };
 
     const handleButtonClick = () => {
@@ -108,12 +108,13 @@ export const RegisterCard = () => {
                     <footer>
                         <Button
                             width="100%"
+                            style={{ color: '#fff' }}
                             loading={buttonLoading}
                             onClick={handleButtonClick}
                             disabled={buttonDisabled}
                             size="large"
-                            use="custom"
-                            bgColor="#5A9C46">
+                            borderless
+                            use="primary">
                             Дальше
                         </Button>
                     </footer>
