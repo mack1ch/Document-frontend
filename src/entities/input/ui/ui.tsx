@@ -1,5 +1,5 @@
 'use client';
-import React, { CSSProperties, FC, MouseEventHandler } from 'react';
+import React, { CSSProperties, FC, MouseEventHandler, useId } from 'react';
 import styled from 'styled-components';
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 import Image from 'next/image';
@@ -143,12 +143,22 @@ export interface InputComponentProps {
     onMouseOver?: MouseEventHandler<HTMLLabelElement> | undefined;
 
     /**
+     * Вызывается на Input
+     */
+    onChange?: ((value: string) => void) | undefined;
+
+    /**
      * MaskInput атрибут placeholder
      */
     maskPlaceholder?: string | undefined;
+
+    /**
+     * 	CSS-свойство width
+     */
+    width?: string | undefined;
 }
 
-export const Input: FC<InputComponentProps> = ({
+export const InputInverse: FC<InputComponentProps> = ({
     size = 'small',
     type = 'text',
     value,
@@ -164,6 +174,7 @@ export const Input: FC<InputComponentProps> = ({
     placeholder,
     rightIcon,
     rightIconOnClick,
+    width,
     labelText,
     labelFlexDirection = 'column',
     mask,
@@ -171,6 +182,7 @@ export const Input: FC<InputComponentProps> = ({
     maskPlaceholder = '',
     onMouseEnter,
     onMouseLeave,
+    onChange,
     onMouseOver,
 }) => {
     const Input = styled.input`
@@ -202,7 +214,7 @@ export const Input: FC<InputComponentProps> = ({
             : size === 'medium'
             ? '9px 12px'
             : '12px 16px'};
-        min-width: 200px;
+        min-width: ${width ? width : '200px'};
         width: 100%;
         -webkit-appearance: none;
         transition: border-color 0.1s;
@@ -262,7 +274,7 @@ export const Input: FC<InputComponentProps> = ({
         position: relative;
         display: flex;
         align-items: center;
-
+        min-width: 100%;
         border: none;
     `;
 
@@ -285,13 +297,15 @@ export const Input: FC<InputComponentProps> = ({
 
         cursor: ${rightIcon ? 'pointer' : 'default'};
     `;
-
+    const inputID: string = useId();
     return (
         <>
             <div
+                id={inputID}
                 style={{
                     display: 'flex',
                     gap: '8px',
+                    width: '100%',
                     flexDirection: labelFlexDirection,
                     alignItems:
                         labelFlexDirection === 'row'
@@ -353,6 +367,7 @@ export const Input: FC<InputComponentProps> = ({
                                 style={style}
                                 value={disabled ? 'Текст' : value}
                                 type={type}
+                                id={inputID}
                                 disabled={disabled}
                             />
                         ))

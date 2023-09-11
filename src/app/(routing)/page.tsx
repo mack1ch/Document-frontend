@@ -1,11 +1,10 @@
-import { DocumentInBoxHeader } from '@/features/documentInBoxHeader';
-import { DocumentTable } from '@/features/documentTable/ui/ui';
+'use client';
 
+import { Register } from '@/widgets/auth/register';
 export default function Home() {
     return (
         <>
-            <DocumentInBoxHeader />
-            <DocumentTable />
+            <Register />
         </>
     );
 }

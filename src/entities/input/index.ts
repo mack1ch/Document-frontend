@@ -1,1 +1,1 @@
-export { Input } from './ui/ui';
+export { InputInverse } from './ui/ui';
