@@ -254,6 +254,8 @@ export const Button: FC<ButtonComponentProps> = ({
             ? '#222'
             : use === 'custom' && color
             ? color
+            : use === 'text'
+            ? color
             : null};
     `;
 

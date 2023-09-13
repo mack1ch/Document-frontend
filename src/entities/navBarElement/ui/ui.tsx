@@ -58,21 +58,41 @@ export const NavBarElement: FC<NavBarElementProps> = ({
     return (
         <>
             <div className={styles.layout}>
-                <Link
-                    style={{ backgroundColor: active === id ? '#fff' : 'transparent' }}
-                    className={styles.element}
-                    onClick={setDropDown}
-                    href={link}>
-                    <span className={styles.elementLayout}>
-                        <picture className={styles.leftIcon}>
-                            <Image src={icon} width={24} height={24} alt="" />
+                {title === 'Документы' ? (
+                    <button
+                        style={{
+                            backgroundColor: active === id ? '#fff' : 'transparent',
+                            width: '100%',
+                        }}
+                        className={styles.element}
+                        onClick={setDropDown}>
+                        <span className={styles.elementLayout}>
+                            <picture className={styles.leftIcon}>
+                                <Image src={icon} width={24} height={24} alt="" />
+                            </picture>
+                            <p className={styles.title}>{title}</p>
+                        </span>
+                        <picture className={styles.rightIcon}>
+                            {elements && <Image src={DropDown} width={16} height={16} alt="" />}
                         </picture>
-                        <p className={styles.title}>{title}</p>
-                    </span>
-                    <picture className={styles.rightIcon}>
-                        {elements && <Image src={DropDown} width={16} height={16} alt="" />}
-                    </picture>
-                </Link>
+                    </button>
+                ) : (
+                    <Link
+                        style={{ backgroundColor: active === id ? '#fff' : 'transparent' }}
+                        className={styles.element}
+                        onClick={setDropDown}
+                        href={link}>
+                        <span className={styles.elementLayout}>
+                            <picture className={styles.leftIcon}>
+                                <Image src={icon} width={24} height={24} alt="" />
+                            </picture>
+                            <p className={styles.title}>{title}</p>
+                        </span>
+                        <picture className={styles.rightIcon}>
+                            {elements && <Image src={DropDown} width={16} height={16} alt="" />}
+                        </picture>
+                    </Link>
+                )}
                 <ul className={styles.dropDown}>
                     {dropDownActive &&
                         elements &&

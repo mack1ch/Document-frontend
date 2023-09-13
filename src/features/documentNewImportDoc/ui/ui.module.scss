@@ -1,0 +1,70 @@
+.wrap {
+    .layout {
+        border-radius: 8px;
+        border: 2px dashed rgba(90, 156, 70, 0.8);
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-top: 24px;
+        padding-bottom: 64px;
+        .description {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            user-select: none;
+            cursor: pointer;
+            .text {
+                color: #222;
+                font-family: Lab Grotesque;
+                font-size: 24px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+                letter-spacing: normal;
+                width: 600px;
+                text-align: center;
+
+                .specialText {
+                    color: #5a9c46;
+                    font-family: Lab Grotesque;
+                    font-size: 24px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: normal;
+                    letter-spacing: normal;
+                }
+            }
+        }
+    }
+    .footer {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        align-items: flex-start;
+        .h2 {
+            color: #222;
+            font-family: Lab Grotesque;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            letter-spacing: normal;
+        }
+    }
+}
+
+.inputHidden {
+    position: absolute;
+    width: 1px;
+    height: 1x;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    background: transparent;
+    overflow: hidden;
+}

@@ -6,7 +6,7 @@ export const DocumentTable = () => {
         <>
             <section className={styles.layout}>
                 <table style={{ borderSpacing: '0px 32px' }} width="100%">
-                    <tbody>
+                    <tbody className={styles.table__body}>
                         <tr>
                             <td align="left" className={styles.tableHeader}>
                                 Контрагент

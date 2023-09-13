@@ -5,7 +5,7 @@ export const RegisterHelper = () => {
     return (
         <dl className={styles.layout}>
             <dt className={styles.registerDone}>Уже регистрировались в сервисах Inverse?</dt>
-            <Link href="/" className={styles.auth}>
+            <Link href="/auth" className={styles.auth}>
                 Войдите в учетную запись
             </Link>
         </dl>

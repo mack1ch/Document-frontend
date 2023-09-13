@@ -1,7 +1,6 @@
 .layout {
     border-radius: 20px;
     background: #fff;
-    padding-left: 28px;
     padding-top: 28px;
     padding-right: 48px;
     width: 100%;
@@ -23,7 +22,9 @@
         font-weight: 400;
         line-height: normal;
         letter-spacing: normal;
+        transition: all 0.2s;
     }
+
     .tableElement__grey {
         color: #74757a;
         font-family: Lab Grotesque;
@@ -47,4 +48,8 @@
 
 .border {
     border-bottom: 1px solid #000 !important;
+}
+
+.table__body {
+    cursor: pointer;
 }

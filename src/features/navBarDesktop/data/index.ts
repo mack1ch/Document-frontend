@@ -9,47 +9,34 @@ export const middleSectionElements: NavBarElementProps[] = [
     {
         id: 0,
         title: 'Документы',
-        link: '/',
+        link: '/docs/new',
         icon: DefaultFile,
         elements: [
             {
                 id: 0,
-                title: 'Входящие',
-                link: '/',
+                title: 'Новый документ',
+                link: '/docs/new',
             },
             {
                 id: 1,
-                title: 'Внутренние',
+                title: 'Входящие',
+                link: '/docs/incoming',
+            },
+            {
+                id: 2,
+                title: 'Согласованные',
                 link: '/',
             },
         ],
     },
     {
         id: 1,
-        title: 'Контрагенты',
-        link: '/',
-        icon: Сounterparties,
-        elements: [
-            {
-                id: 0,
-                title: 'Контрагент 1 ',
-                link: '/',
-            },
-            {
-                id: 1,
-                title: 'Контрагент 1',
-                link: '/',
-            },
-        ],
-    },
-    {
-        id: 2,
         title: 'Сообщения',
         link: '/',
         icon: Messages,
     },
     {
-        id: 3,
+        id: 2,
         title: 'Справочная',
         link: '/',
         icon: DirectoryQuestion,
@@ -59,12 +46,6 @@ export const middleSectionElements: NavBarElementProps[] = [
 export const lastSectionElements: NavBarElementProps[] = [
     {
         id: 4,
-        title: 'Настройки',
-        link: '/',
-        icon: Settings,
-    },
-    {
-        id: 5,
         title: 'Дмитрий Степанов',
         link: '/',
         icon: User,

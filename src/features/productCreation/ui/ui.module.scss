@@ -1,0 +1,58 @@
+.layout {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    .title {
+        color: #449429;
+        font-family: Lab Grotesque;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+    }
+    .line__wrap {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        .line {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            .line__text {
+                color: #222;
+                font-family: Lab Grotesque;
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+                letter-spacing: normal;
+            }
+        }
+    }
+}
+
+.addButton {
+    display: flex;
+    align-items: center;
+    padding: 8px 16px 8px 8px;
+    gap: 8px;
+    border-radius: 8px;
+    background-color: #fff;
+    color: #5a9c46;
+
+    font-family: Lab Grotesque;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+
+    cursor: pointer;
+
+    &:hover {
+        filter: brightness(95%);
+    }
+
+    &:active {
+        filter: brightness(90%);
+    }
+}

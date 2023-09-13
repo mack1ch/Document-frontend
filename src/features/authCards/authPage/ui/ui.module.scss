@@ -1,0 +1,103 @@
+.wrap {
+    border-radius: 24px;
+    background: #fff;
+    box-shadow: 0px 16px 48px 0px rgba(92, 99, 107, 0.08);
+
+    width: 502px;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    padding-left: 48px;
+    padding-right: 48px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+
+    .header {
+        display: grid;
+        gap: 12px;
+
+        .logo {
+            justify-self: center;
+            align-self: center;
+
+            .inverse {
+                color: #222;
+                font-size: 24px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: normal;
+                letter-spacing: 0.24px;
+            }
+            .docs {
+                color: #449429;
+                font-family: Lab Grotesque;
+                font-size: 24px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: normal;
+            }
+        }
+        .user__data {
+            color: #222;
+
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            letter-spacing: 0.4px;
+        }
+    }
+
+    .main {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        .dropDown {
+            width: 100%;
+            position: relative;
+            .items {
+                margin-top: 8px;
+                border-radius: 8px;
+                border: 2px solid #ddd;
+                background: #fff;
+
+                display: flex;
+                width: 100%;
+
+                height: auto;
+                padding: 4px;
+                flex-direction: column;
+                align-items: flex-start;
+                flex-shrink: 0;
+
+                z-index: 10;
+                position: absolute;
+                .item {
+                    border-radius: 6px;
+                    background: #fff;
+
+                    display: flex;
+                    padding: 6px 8px;
+                    align-items: flex-start;
+                    gap: 4px;
+                    align-self: stretch;
+                    cursor: pointer;
+                    color: #222;
+                    font-family: Lab Grotesque;
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 20px;
+
+                    &:hover {
+                        filter: brightness(95%);
+                    }
+                }
+            }
+        }
+    }
+}

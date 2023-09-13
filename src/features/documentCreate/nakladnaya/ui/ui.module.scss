@@ -1,0 +1,130 @@
+.layout {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    .card {
+        border-radius: 16px;
+        border: 1px solid rgba(90, 156, 70, 0.3);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+
+        padding: 24px;
+
+        .line {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            justify-content: space-between;
+            .line__title {
+                color: #222;
+                font-family: Lab Grotesque;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: normal;
+                letter-spacing: normal;
+            }
+        }
+        .table {
+            display: flex;
+            gap: 48px;
+
+            .table__line {
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+
+                .table__line_title {
+                    color: #449429;
+                    font-family: Lab Grotesque;
+                    font-size: 18px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: normal;
+                    letter-spacing: normal;
+                }
+            }
+        }
+        .data__wrap {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+
+            .data__line {
+                display: flex;
+                gap: 16px;
+
+                .line__title {
+                    color: #222;
+                    font-family: Lab Grotesque;
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: normal;
+                    letter-spacing: normal;
+                    white-space: nowrap;
+                }
+                .data {
+                    color: #222;
+                    font-family: Lab Grotesque;
+                    font-size: 18px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 22px;
+                }
+            }
+        }
+        .money__result {
+            color: #449429;
+            font-family: Lab Grotesque;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            letter-spacing: normal;
+            white-space: nowrap;
+        }
+    }
+    .buttons {
+        display: flex;
+        gap: 8px;
+    }
+}
+.modal {
+    .modal__header {
+        color: #222;
+        font-family: Lab Grotesque;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 32px;
+    }
+    .modal__text {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        .text {
+            color: #222;
+            font-family: Lab Grotesque;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 22px;
+            .bold {
+                color: #222;
+                font-family: Lab Grotesque;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: 22px;
+            }
+        }
+    }
+}
+
+.divider {
+    height: 1px;
+    background: #e6e6e6;
+}
