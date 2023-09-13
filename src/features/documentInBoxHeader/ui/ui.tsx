@@ -14,9 +14,12 @@ import { useState } from 'react';
 export const DocumentInBoxHeader = () => {
     const [openForm, setOpenForm] = useState<string>('');
 
-    const handleButtonClick = (formName: string) => {
-        setOpenForm(openForm === formName ? '' : formName);
+    const handleClick = (event: React.MouseEvent<HTMLSpanElement> | any) => {
+        const spanElement = event.target as HTMLSpanElement;
+        const value = spanElement.innerText;
+        setOpenForm(openForm === value ? '' : value);
     };
+
     const myTheme = ThemeFactory.create({
         borderColorFocus: '#5A9C46',
         selectBorderRadiusLarge: '8px',
@@ -39,9 +42,9 @@ export const DocumentInBoxHeader = () => {
         <form key={formName}>
             <ThemeContext.Provider value={myTheme}>
                 <Dropdown size="medium" caption={label}>
-                    <MenuItem>Документы</MenuItem>
-                    <MenuItem>Документы с подписями</MenuItem>
-                    <MenuItem>Документообороты целиком</MenuItem>
+                    <MenuItem onClick={(e) => handleClick(e)}>Документы</MenuItem>
+                    <MenuItem onClick={(e) => handleClick(e)}>Документы с подписями</MenuItem>
+                    <MenuItem onClick={(e) => handleClick(e)}>Документообороты целиком</MenuItem>
                 </Dropdown>
             </ThemeContext.Provider>
         </form>
