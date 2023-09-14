@@ -53,3 +53,18 @@
 .table__body {
     cursor: pointer;
 }
+
+.documentElement {
+    color: #222;
+    font-family: Lab Grotesque;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: normal;
+    transition: all 0.2s;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}

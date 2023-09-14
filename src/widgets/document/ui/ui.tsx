@@ -6,7 +6,11 @@ import Image from 'next/image';
 import ArrowLeft from '../../../../public/globalIcons/arrowLeft.svg';
 import { ButtonHistory } from '@/entities/buttonHistory';
 import { DocsButton } from '@/entities/docsButton';
-import { ButtonDataNoAgreedNoSigned } from '../buttonData';
+import {
+    ButtonDataNoAgreedNoSigned,
+    ButtonDataAgreedSigned,
+    ButtonDataNoAgreedSigned,
+} from '../buttonData';
 import { ButtonDocsProps } from '@/shared/interface';
 import { useState, useEffect } from 'react';
 import { DocumentTypes } from '@/shared/interface';

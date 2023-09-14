@@ -8,7 +8,7 @@ import { DocumentTypes } from '@/shared/interface';
 const BASE_URL = 'https://docs.inverse-team.store/api/documents/';
 import { parseISO } from 'date-fns';
 
-export const DocumentTable = ({ id }: { id: number }) => {
+export const DocumentTable = () => {
     const [documentData, setDocumentData] = useState<DocumentTypes[] | null>(null);
     useEffect(() => {
         const fetchData = async () => {
@@ -51,7 +51,7 @@ export const DocumentTable = ({ id }: { id: number }) => {
                             return (
                                 <tr key={doc.id} className={styles.border}>
                                     <td className={styles.tableElement}>{contractorsInn}</td>
-                                    <td className={styles.tableElement}>
+                                    <td className={styles.documentElement}>
                                         <Link href={`/document/${doc.id}`}>
                                             <span className={styles.tableElement__grey}>
                                                 {doc.category.name} №{doc.number} от {formattedDate}
