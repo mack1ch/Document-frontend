@@ -1,0 +1,22 @@
+$greyColor: #74757a;
+$greenColor: #5a9c46;
+
+.btn_history {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    border-radius: 8px;
+    background-color: #fff;
+    color: $greyColor;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Lab Grotesque;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    cursor: pointer;
+
+    &:hover {
+        color: $greenColor;
+    }
+}

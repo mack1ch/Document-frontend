@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { setCookie } from '@/shared/api/setCookie';
 import { instance } from '@/shared/api/axios';
+import { getAccessToken } from '@/shared/authBlocks/auth';
 export const AuthCard = () => {
     const [buttonLoading, setButtonLoading] = useState<boolean>(false);
     const [buttonDisabled, setButtonDisabled] = useState<boolean>(true);
@@ -40,7 +41,7 @@ export const AuthCard = () => {
     const handleLoadingStart = () => {
         setTimeout(() => {
             setButtonLoading(false);
-        }, 4000);
+        }, 10000);
     };
 
     const handleButtonClick = async () => {
@@ -52,7 +53,11 @@ export const AuthCard = () => {
             });
 
             setCookie('accessToken', loginUser.data.auth_token, { expires: 30, path: '/' });
-            router.push('/docs/new');
+            router.prefetch('/docs/new');
+            const accessToken = getAccessToken();
+            if (accessToken) {
+                router.push('/docs/new');
+            }
             handleLoadingStart();
         } catch (e) {
             alert('Данные введены неверно или пользователя не существует');

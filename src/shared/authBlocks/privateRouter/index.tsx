@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode, useEffect } from 'react';
+import {  useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { isAuthenticated, redirectToLogin } from '../auth/index';
 

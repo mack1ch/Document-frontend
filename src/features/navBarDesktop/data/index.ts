@@ -1,9 +1,7 @@
 import { NavBarElementProps } from '@/entities/navBarElement';
 import DefaultFile from '../../../../public/globalIcons/defaultFile.svg';
-import Сounterparties from '../../../../public/globalIcons/counterparties.svg';
 import Messages from '../../../../public/globalIcons/messages.svg';
 import DirectoryQuestion from '../../../../public/globalIcons/questionMark.svg';
-import Settings from '../../../../public/globalIcons/settings.svg';
 import User from '../../../../public/globalIcons/user.svg';
 export const middleSectionElements: NavBarElementProps[] = [
     {

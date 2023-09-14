@@ -7,6 +7,7 @@ import { Gapped } from '@/shared/gapped';
 import { ThemeContext, ThemeFactory, Button, Modal, Textarea, Select } from '@skbkontur/react-ui';
 import { useRouter } from 'next/navigation';
 import { ProductCreation } from '@/features/productCreation';
+import { instanceLogged } from '@/shared/api/axios';
 export const InvoiceCreate = () => {
     const myTheme = ThemeFactory.create({
         borderColorFocus: '#5A9C46',
@@ -44,9 +45,27 @@ export const InvoiceCreate = () => {
     const [buttonModalDisabled, setButtonModalDisabled] = useState<boolean>(true);
     const [buttonCancelLoading, setButtonCancelLoading] = useState<boolean>(false);
     const [buttonDisabled, setButtonDisabled] = useState<boolean>(true);
-    function ModalOpen() {
-        setModalOpen(true);
-    }
+
+    const ModalOpen = async () => {
+        try {
+            const createDocument = await instanceLogged.post('/documents/', {
+                number: inputValues.invoice_number,
+                date: inputValues.invoice_date,
+                category: {
+                    name: 'Счёт-фактура',
+                    document_type: 'invoice',
+                },
+                contractors: {
+                    inn: inputValues.salesman_INN,
+                    kpp: inputValues.salesman_KPP,
+                },
+            });
+            setModalOpen(true);
+        } catch (e) {
+            alert('Проверьте введенные данные, в них есть ошибка');
+            setModalOpen(false);
+        }
+    };
 
     function ModalClose() {
         setModalOpen(false);
@@ -54,7 +73,6 @@ export const InvoiceCreate = () => {
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
-        console.log(name, value);
         setInputValues((prevState) => ({
             ...prevState,
             [name]: value,
@@ -168,6 +186,7 @@ export const InvoiceCreate = () => {
             setButtonModalDisabled(false);
         } else setButtonModalDisabled(true);
     }, [commentValue.length, selectRecipient]);
+
     return (
         <>
             <ThemeContext.Provider value={myTheme}>
@@ -291,7 +310,6 @@ export const InvoiceCreate = () => {
                             </div>
                         </dl>
                         <ProductCreation />
-                        <h4 className={styles.money__result}>Всего к оплате: 110.00 рублей</h4>
                     </div>
                     <div style={{ marginBottom: '32px' }} className={styles.buttons}>
                         <Button

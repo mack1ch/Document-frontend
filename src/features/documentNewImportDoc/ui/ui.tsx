@@ -82,7 +82,7 @@ export const DocumentNewImportDoc = () => {
                             type="file"
                             ref={filePicker}
                             onChange={handleChange}
-                            accept="image/*"
+                            accept="docs/*"
                         />
                     </main>
                     <footer className={styles.footer}>
@@ -113,7 +113,7 @@ export const DocumentNewImportDoc = () => {
                                     loading={buttonLoading['button3']}
                                     use="default"
                                     size="large">
-                                    Акт приемки-сдачи работ
+                                    Акт приёмки-сдачи работ
                                 </Button>
                                 <Button
                                     onClick={() => handleButtonClick('button4')}

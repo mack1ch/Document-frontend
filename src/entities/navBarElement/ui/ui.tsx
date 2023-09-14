@@ -5,6 +5,8 @@ import { FC, useEffect, useState } from 'react';
 import Image from 'next/image';
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 import DropDown from '../../../.././public/globalIcons/dropDown.svg';
+import { usePathname } from 'next/navigation';
+import path from 'path';
 export interface NavBarElementProps {
     id: number;
     title: string;
@@ -29,6 +31,7 @@ export const NavBarElement: FC<NavBarElementProps> = ({
     id,
     active,
 }) => {
+    const pathname = usePathname();
     const [activeDropDownElementID, setActiveDropDownElementID] = useState<number | null>(null);
     const [dropDownActive, setDropDownActive] = useState<boolean>(false);
     const setActiveDropDownElement = (elementId: number) => {
@@ -55,6 +58,8 @@ export const NavBarElement: FC<NavBarElementProps> = ({
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [active, id]);
+    const isActive = pathname === link;
+    console.log(pathname, '|', link);
     return (
         <>
             <div className={styles.layout}>
@@ -104,10 +109,7 @@ export const NavBarElement: FC<NavBarElementProps> = ({
                                 href={element.link}>
                                 <p
                                     style={{
-                                        color:
-                                            element.id === activeDropDownElementID
-                                                ? '#5A9C46'
-                                                : '#222',
+                                        color: isActive ? '#5A9C46' : '#222',
                                     }}
                                     className={styles.title}>
                                     {element.title}

@@ -31,8 +31,8 @@ export const RegisterCard = () => {
     });
     const splitFullName = (fullName: string) => {
         const names = fullName.split(' ');
-        const [firstName, secondName, thirdName] = names.slice(0, 3);
-        return [firstName || '', secondName || '', thirdName || ''];
+        const [firstName, surname, thirdName] = names.slice(0, 3);
+        return [firstName || '', surname || '', thirdName || ''];
     };
 
     useEffect(() => {
@@ -81,7 +81,7 @@ export const RegisterCard = () => {
     const handleButtonClick = async () => {
         setButtonLoading(true);
         if (selectedRoleId) {
-            const [firstname, surname, lastname] = splitFullName(inputValues.fullName);
+            const [lastname, firstname, surname] = splitFullName(inputValues.fullName);
 
             try {
                 const loginUser = await instance.post('/users/auth/users/', {
