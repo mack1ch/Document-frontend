@@ -6,7 +6,6 @@ import Image from 'next/image';
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 import DropDown from '../../../.././public/globalIcons/dropDown.svg';
 import { usePathname } from 'next/navigation';
-import path from 'path';
 export interface NavBarElementProps {
     id: number;
     title: string;
@@ -58,7 +57,7 @@ export const NavBarElement: FC<NavBarElementProps> = ({
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [active, id]);
-    const isActive = pathname === link;
+
     console.log(pathname, '|', link);
     return (
         <>
@@ -101,21 +100,25 @@ export const NavBarElement: FC<NavBarElementProps> = ({
                 <ul className={styles.dropDown}>
                     {dropDownActive &&
                         elements &&
-                        elements.map((element) => (
-                            <Link
-                                onClick={() => setActiveDropDownElement(element.id)}
-                                key={element.id}
-                                className={styles.element}
-                                href={element.link}>
-                                <p
-                                    style={{
-                                        color: isActive ? '#5A9C46' : '#222',
-                                    }}
-                                    className={styles.title}>
-                                    {element.title}
-                                </p>
-                            </Link>
-                        ))}
+                        elements.map((element) => {
+                            const isActive = element.link === pathname;
+                            return (
+                                <Link
+                                    onClick={() => setActiveDropDownElement(element.id)}
+                                    key={element.id}
+                                    className={styles.element}
+                                    href={element.link}>
+                                    <p
+                                        key={element.id}
+                                        style={{
+                                            color: isActive ? '#5A9C46' : '#222',
+                                        }}
+                                        className={isActive ? styles.titleActive : styles.title}>
+                                        {element.title}
+                                    </p>
+                                </Link>
+                            );
+                        })}
                 </ul>
             </div>
         </>

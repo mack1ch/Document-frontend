@@ -34,7 +34,6 @@ export interface DocumentTypes {
     total_nds: number;
     status: DocumentStatus;
     creator: number;
-    receivers: number;
     comment: string;
     history: DocumentHistory[];
     signed: boolean;
@@ -70,12 +69,14 @@ export interface Contractors {
 
 export interface DocumentHistory {
     id: number;
-    status: number;
+    status: DocumentStatus;
     comment: string;
     date: string;
     time: string;
     approved: boolean;
+    reciever: UserTypes;
 }
+export interface Reciever {}
 
 export interface DocumentStatus {
     id: number;

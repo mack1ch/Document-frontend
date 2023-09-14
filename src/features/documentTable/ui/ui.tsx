@@ -65,7 +65,7 @@ export const DocumentTable = () => {
                                     </td>
 
                                     <td className={styles.tableElementLayout}>
-                                        <TableStateCircle state="signed_agreed_upon" />
+                                        <TableStateCircle state={doc.status.status_id} />
                                         <div className={styles.tableElement}>
                                             {doc.status.name} <br />
                                             <span

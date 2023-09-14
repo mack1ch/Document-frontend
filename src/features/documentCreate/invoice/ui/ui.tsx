@@ -8,6 +8,8 @@ import { ThemeContext, ThemeFactory, Button, Modal, Textarea, Select } from '@sk
 import { useRouter } from 'next/navigation';
 import { ProductCreation } from '@/features/productCreation';
 import { instanceLogged } from '@/shared/api/axios';
+import { Contractors } from '@/shared/interface';
+import { getAccessToken } from '@/shared/authBlocks/auth';
 export const InvoiceCreate = () => {
     const myTheme = ThemeFactory.create({
         borderColorFocus: '#5A9C46',
@@ -45,7 +47,7 @@ export const InvoiceCreate = () => {
     const [buttonModalDisabled, setButtonModalDisabled] = useState<boolean>(true);
     const [buttonCancelLoading, setButtonCancelLoading] = useState<boolean>(false);
     const [buttonDisabled, setButtonDisabled] = useState<boolean>(true);
-
+    const [sellerSaveData, setSellerData] = useState<Contractors | null | string>(null);
     const ModalOpen = async () => {
         try {
             const createDocument = await instanceLogged.post('/documents/', {
@@ -187,6 +189,26 @@ export const InvoiceCreate = () => {
         } else setButtonModalDisabled(true);
     }, [commentValue.length, selectRecipient]);
 
+    const renderSeller = async () => {
+        try {
+            const accessToken = getAccessToken();
+            const sellerData = await fetch(
+                `https://docs.inverse-team.store/api/documents/contractors/inn?inn=${inputValues.salesman_INN}/`,
+                {
+                    headers: {
+                        Authorization: `Token ${accessToken}`,
+                    },
+                },
+            );
+            const jsonData = await sellerData.json();
+            setSellerData(jsonData);
+        } catch (e) {
+            setSellerData('Проверьте введенные данные ИНН, в них есть ошибка');
+        }
+    };
+    const handleInputBlur = () => {
+        renderSeller();
+    };
     return (
         <>
             <ThemeContext.Provider value={myTheme}>
@@ -219,6 +241,7 @@ export const InvoiceCreate = () => {
                                     <Input
                                         onChange={handleInputChange}
                                         name="salesman_INN"
+                                        onBlur={handleInputBlur}
                                         value={inputValues.salesman_INN}
                                         placeholder="Текст"
                                         type="number"
@@ -285,7 +308,12 @@ export const InvoiceCreate = () => {
                         <dl className={styles.data__wrap}>
                             <div className={styles.data__line}>
                                 <h3 className={styles.line__title}>Продавец:</h3>
-                                <span className={styles.data}>ООО “Жизньмарт”</span>
+                                <span className={styles.data}>
+                                    {' '}
+                                    {typeof sellerSaveData === 'string'
+                                        ? sellerSaveData
+                                        : sellerSaveData?.name}
+                                </span>
                             </div>
                             <div className={styles.data__line}>
                                 <h3 className={styles.line__title}>Адрес:</h3>

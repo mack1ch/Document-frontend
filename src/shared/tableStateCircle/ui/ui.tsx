@@ -2,22 +2,29 @@ import { FC } from 'react';
 import styles from './ui.module.scss';
 
 export interface TableStateCircleProps {
-    state: 'signed_approval' | 'signature_required' | 'signed_agreed_upon' | 'signed' | 'canceled';
+    state: number;
 }
 
+/**
+ * 0 - Аннулирован
+  1 - Требуется согласование (для делопроизводителя)
+  2 - Требуется согласование (для юриста)
+  3 - Требуется согласование (для руководителя)
+  4 - Документ подписан
+ */
 export const TableStateCircle: FC<TableStateCircleProps> = ({ state = 'signature required' }) => {
     return (
         <>
             <div
                 style={{
                     backgroundColor:
-                        state === 'signed_approval'
+                        state === 1
                             ? '#D9D9D9'
-                            : state === 'signature_required'
+                            : state === 3
                             ? '#EDC156'
-                            : state === 'signed_agreed_upon'
+                            : state === 4
                             ? '#5A9C46'
-                            : state === 'signed'
+                            : state === 2
                             ? '#55BD7F'
                             : '#ED5656',
                 }}
