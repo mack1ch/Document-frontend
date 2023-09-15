@@ -1,4 +1,4 @@
-/*'use client';
+'use client';
 import { useState } from 'react';
 import { Input, Select } from '@skbkontur/react-ui';
 import styles from './ui.module.scss';
@@ -173,4 +173,3 @@ const LineWrap: React.FC<LineWrapProps> = ({ index, data, saveData }) => {
         </dl>
     );
 };
-*/

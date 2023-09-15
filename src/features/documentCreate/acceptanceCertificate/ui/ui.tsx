@@ -1,4 +1,4 @@
-/*'use client';
+'use client';
 
 import styles from './ui.module.scss';
 import { useState, useEffect } from 'react';
@@ -275,4 +275,3 @@ export const AcceptanceCertificateCreate = () => {
         </>
     );
 };
-*/
