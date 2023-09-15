@@ -33,6 +33,10 @@ export interface DocumentTypes {
     total_price: number;
     total_nds: number;
     status: DocumentStatus;
+    main_contractor: {
+        id: number;
+        name: string;
+    };
     creator: number;
     comment: string;
     history: DocumentHistory[];
@@ -76,7 +80,6 @@ export interface DocumentHistory {
     approved: boolean;
     reciever: UserTypes;
 }
-export interface Reciever {}
 
 export interface DocumentStatus {
     id: number;
@@ -92,3 +95,17 @@ export interface ContractorsCategories {
     provider: number;
     consignee: number;
 }
+/**
+ *  {
+        "id": 6,
+        "email": "three@mail.ru",
+        "firstname": "Three",
+        "lastname": "Three",
+        "surname": "Three",
+        "role": {
+            "id": 3,
+            "name": "Юрист",
+            "role_type": "lawyer"
+        }
+    }
+ */

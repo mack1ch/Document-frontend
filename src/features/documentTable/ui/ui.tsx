@@ -24,6 +24,7 @@ export const DocumentTable = () => {
     const contractorsInn = documentData?.flatMap((document) =>
         document.contractors.map((contractor) => contractor.inn),
     );
+    const contractorsName = documentData?.flatMap((document) => document.main_contractor.id);
 
     return (
         <>
@@ -50,7 +51,9 @@ export const DocumentTable = () => {
 
                             return (
                                 <tr key={doc.id} className={styles.border}>
-                                    <td className={styles.tableElement}>{contractorsInn}</td>
+                                    <td className={styles.tableElement}>
+                                        {doc.main_contractor.name}
+                                    </td>
                                     <td className={styles.documentElement}>
                                         <Link href={`/document/${doc.id}`}>
                                             <span className={styles.tableElement__grey}>

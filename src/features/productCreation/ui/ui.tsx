@@ -1,4 +1,4 @@
-'use client';
+/*'use client';
 import { useState } from 'react';
 import { Input, Select } from '@skbkontur/react-ui';
 import styles from './ui.module.scss';
@@ -75,6 +75,23 @@ type LineWrapProps = {
     saveData?: any;
 };
 
+export interface Data {
+    name?: string;
+    quantity?: string;
+    unit?: string;
+    price?: string;
+    vat?: string;
+    total_price?: number;
+}
+import React, { useContext } from 'react';
+
+const DataContext = React.createContext<
+    | {
+          stateData: {};
+          setStateData: React.Dispatch<React.SetStateAction<{}>>;
+      }
+    | undefined
+>(undefined);
 const LineWrap: React.FC<LineWrapProps> = ({ index, data, saveData }) => {
     const SelectItems = ['Без НДС', '10%', '20%'];
 
@@ -156,3 +173,4 @@ const LineWrap: React.FC<LineWrapProps> = ({ index, data, saveData }) => {
         </dl>
     );
 };
+*/

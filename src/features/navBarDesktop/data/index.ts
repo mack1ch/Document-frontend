@@ -27,18 +27,6 @@ export const middleSectionElements: NavBarElementProps[] = [
             },
         ],
     },
-    {
-        id: 1,
-        title: 'Сообщения',
-        link: '/',
-        icon: Messages,
-    },
-    {
-        id: 2,
-        title: 'Справочная',
-        link: '/',
-        icon: DirectoryQuestion,
-    },
 ];
 
 export const lastSectionElements: NavBarElementProps[] = [

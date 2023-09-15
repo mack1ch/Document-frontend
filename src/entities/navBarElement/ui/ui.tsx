@@ -58,7 +58,6 @@ export const NavBarElement: FC<NavBarElementProps> = ({
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [active, id]);
 
-    console.log(pathname, '|', link);
     return (
         <>
             <div className={styles.layout}>
