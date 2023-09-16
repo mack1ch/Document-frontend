@@ -44,11 +44,7 @@ export const Document = ({ docID }: { docID: number }) => {
         fetchData();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-    if (
-        !documentData ||
-        !documentData.contractors_categories ||
-        typeof documentData.contractors_categories.payer !== 'number'
-    ) {
+    if (!documentData) {
         return <div>Подождите немного...</div>;
     }
 
@@ -140,6 +136,22 @@ export const Document = ({ docID }: { docID: number }) => {
             return;
         }
     };
+    const formatTime = (timeString: string): string => {
+        const time = new Date(`2000-01-01T${timeString}Z`);
+        const hours = time.getHours().toString().padStart(2, '0');
+        const minutes = time.getMinutes().toString().padStart(2, '0');
+        return `${hours}:${minutes}`;
+    };
+
+    const handleWriteClick = async () => {
+        try {
+            const response = await instanceLogged.patch(`/document/${docID}/approve/`);
+            setDocumentData(response.data);
+        } catch (error) {
+            return;
+        }
+    };
+
     return (
         <>
             <ThemeContext.Provider value={myTheme}>
@@ -188,7 +200,24 @@ export const Document = ({ docID }: { docID: number }) => {
                             </h3>
                         </section>
                         <section className={styles.history_wrap}>
-                            <ButtonHistory />
+                            <dt className={styles.history}>
+                                {documentData.history.map((el) => (
+                                    <dl key={el.id} className={styles.history_line}>
+                                        <dd className={styles.history_head}>
+                                            <h4 className={styles.company_name}>
+                                                {documentData.main_contractor.name}
+                                            </h4>
+                                            <h4 className={styles.head_text}>
+                                                , {el.status.name.toLowerCase()}
+                                            </h4>
+                                        </dd>
+                                        <dd className={styles.main_text}>
+                                            {el.status.roles.map((ele) => ele.name)} -{' '}
+                                            {formattedDate(el.date)} {formatTime('22:28:38.307393')}
+                                        </dd>
+                                    </dl>
+                                ))}
+                            </dt>
                         </section>
                         <section className={styles.buttonRender}>
                             {penultimateHistory?.status.status_id === 3
@@ -209,13 +238,15 @@ export const Document = ({ docID }: { docID: number }) => {
                                       </DocsButton>
                                   ))
                                 : penultimateHistory?.status.status_id === 1
-                                ? ButtonDataAgreedSigned.map((data: ButtonDocsProps) => (
+                                ? ButtonDataNoAgreedSigned.map((data: ButtonDocsProps) => (
                                       <DocsButton
                                           onClick={
                                               data.children === 'Согласование'
                                                   ? handleAgreedClick
                                                   : data.children === 'Удалить'
                                                   ? handleDeleteDocClick
+                                                  : data.children === 'Подписать'
+                                                  ? handleWriteClick
                                                   : undefined
                                           }
                                           danger={data.danger}

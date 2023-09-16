@@ -20,11 +20,6 @@ export const middleSectionElements: NavBarElementProps[] = [
                 title: 'Входящие',
                 link: '/docs/incoming',
             },
-            {
-                id: 2,
-                title: 'Согласованные',
-                link: '/',
-            },
         ],
     },
 ];

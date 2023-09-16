@@ -171,3 +171,45 @@ $white: #fff;
     }
 }
 
+.history {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    .history_line {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        .history_head {
+            display: flex;
+            align-items: center;
+            .company_name {
+                color: $greenColor;
+                font-feature-settings: 'clig' off, 'liga' off;
+                font-family: Lab Grotesque;
+                font-size: 24px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: normal;
+            }
+            .head_text {
+                color: $blackColor;
+                font-feature-settings: 'clig' off, 'liga' off;
+                font-family: Lab Grotesque;
+                font-size: 24px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: normal;
+            }
+        }
+        .main_text {
+            color: #74757a;
+            font-feature-settings: 'clig' off, 'liga' off;
+            font-family: Lab Grotesque;
+            font-size: 22px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+    }
+}
