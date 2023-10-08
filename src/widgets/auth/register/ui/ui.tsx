@@ -7,10 +7,10 @@ export const Register = () => {
     return (
         <>
             <div className={styles.layout}>
-                <Gapped verticalAlign="middle" vertical gap="16px">
+                <div className={styles.center}>
                     <RegisterCard />
                     <RegisterHelper />
-                </Gapped>
+                </div>
             </div>
         </>
     );
